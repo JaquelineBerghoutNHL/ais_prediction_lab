@@ -1,5 +1,6 @@
 import streamlit as st
 import hmac
+import os
 
 def controleer_login():
     if st.session_state.get("ingelogd", False):
@@ -16,7 +17,11 @@ def controleer_login():
     wachtwoord = st.text_input("Wachtwoord", type="password")
 
     if st.button("Inloggen"):
-        if hmac.compare_digest(wachtwoord, st.secrets["APP_PASSWORD"]):
+        verwacht = os.getenv("APP_PASSWORD")
+
+        if not verwacht:
+            st.error("APP_PASSWORD is niet ingesteld.")
+        elif hmac.compare_digest(wachtwoord, verwacht):
             st.session_state["ingelogd"] = True
             st.rerun()
         else:
