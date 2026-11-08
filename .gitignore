@@ -7,3 +7,4 @@ venv/
 *.sql
 *.dump
 *.backup
+.streamlit/secrets.toml
