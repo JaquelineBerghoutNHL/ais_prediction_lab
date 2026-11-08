@@ -157,4 +157,7 @@ if r["hybride"][i]:
     h = r["hybride"][i]
     punten.append({"latitude": h["lat"], "longitude": h["lon"], "kleur": "#00BCD4"})
 st.map(pd.DataFrame(punten), latitude="latitude", longitude="longitude", color="kleur", size=100)
-st.caption("🔵 Start · 🟣 Random Forest · 🟠 Great-circle · 🟢 Werkelijk · 🩵 Hybride")
+st.caption("🔵 Start · 🟣 Random Forest · 🟠 Great-circle · 🟢 Werkelijk · <span style='color:#00BCD4;'>●</span> Hybride")
+
+st.write("Trainingsperiode:", train["time"].min(), "t/m", train["time"].max())
+st.write("Testperiode:", test["time"].min(), "t/m", test["time"].max())
