@@ -27,7 +27,7 @@ def laad_posities(mmsi, limiet):
             WHERE mmsi = :mmsi AND time IS NOT NULL
               AND latitude BETWEEN -90 AND 90 AND longitude BETWEEN -180 AND 180
               AND sog > 0 AND sog <= 60 AND cog >= 0 AND cog < 360
-            ORDER BY time DESC LIMIT :limiet
+            ORDER BY time ASC LIMIT :limiet
         """), conn, params={"mmsi": int(mmsi), "limiet": int(limiet)})
     df["time"] = pd.to_datetime(df["time"], utc=True)
     return df.sort_values("time").drop_duplicates("time").reset_index(drop=True)

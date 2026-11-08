@@ -23,7 +23,7 @@ if zoeknaam:
                 SELECT time, latitude, longitude, sog, cog FROM position
                 WHERE mmsi = :mmsi AND latitude IS NOT NULL AND longitude IS NOT NULL
                 AND sog IS NOT NULL AND cog BETWEEN 0 AND 360
-                ORDER BY time DESC LIMIT 100
+                ORDER BY time ASC LIMIT 100
             '''), {'mmsi': mmsi}).mappings().all()
 
         if posities:
