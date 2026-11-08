@@ -1,3 +1,6 @@
+from login import controleer_login
+controleer_login()
+
 import pandas as pd
 import streamlit as st
 from sqlalchemy import text

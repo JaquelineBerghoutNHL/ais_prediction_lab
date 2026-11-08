@@ -1,3 +1,6 @@
+from login import controleer_login
+controleer_login()
+
 import time
 import streamlit as st
 from sqlalchemy import text
